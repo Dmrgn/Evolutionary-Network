@@ -17,13 +17,9 @@ pub fn Node(comptime numWeights: u32) type {
         // create a new node with 0 for 
         // the weights and biases
         pub fn newNode() self {
-            var weights: [numWeights]f32 = undefined;
-            for (weights) |_, i| {
-                weights[i] = Random.floatRange(-10, 10);
-            }
             return self {
                 .value = 0,
-                .weights = weights,
+                .weights = [_]f32 {0} ** numWeights,
                 .bias = 0
             };
         }

@@ -13,6 +13,13 @@ pub const Random = struct {
         var num: u64 = @intCast(u64, rand.rand());
         return @mod(@intToFloat(f32, @truncate(u32, num))/1e5, upper-lower) + lower;
     }
+    pub fn randomFloatArray(comptime length: u32, lower: f32, upper: f32) [length]f32 {
+        var values: [length]f32 = undefined;
+        for (values) |_, i| {
+            values[i] = Random.floatRange(lower, upper);
+        }
+        return values;
+    }
 };
 
 // testing the random distribution
